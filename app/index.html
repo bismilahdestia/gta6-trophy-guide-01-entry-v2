@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Leonida Trophy Atlas — an offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: cited guides, a platinum roadmap, missable flags and saved progress.">
+<title>Leonida Trophy Atlas — GTA VI PS5 Trophy Guide</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">55</span>
+    <div>
+      <h1>Leonida Trophy Atlas</h1>
+      <p>GTA VI · PS5 Trophy Guide</p>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Views">
+    <button type="button" data-view="tracker" class="active">Tracker</button>
+    <button type="button" data-view="roadmap">Platinum Roadmap</button>
+    <button type="button" data-view="missables">Missables</button>
+    <button type="button" data-view="next">Next Up</button>
+  </nav>
+  <div class="top-actions">
+    <button type="button" id="spoilerBtn" class="pill" title="Hide story trophy names and descriptions until earned">Spoiler Shield · 28 Hidden</button>
+    <button type="button" id="exportBtn">Export JSON</button>
+    <button type="button" id="importBtn">Import JSON</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+    <button type="button" id="backupBtn">Progress &amp; Backup</button>
+  </div>
+</header>
+
+<section class="stats" aria-label="Progress">
+  <div class="stat"><span class="stat-label">Overall progress</span><strong id="progressText">0 / 55 · 0%</strong><div class="bar"><div id="progressBar" style="width:0%"></div></div></div>
+  <div class="stat"><span class="stat-label">PSN points</span><strong id="psnPoints">0 / 1350 pts</strong></div>
+  <div class="stat"><span class="stat-label">Platinum</span><strong id="countPlat">0/1</strong></div>
+  <div class="stat"><span class="stat-label">Gold</span><strong id="countGold">0/2</strong></div>
+  <div class="stat"><span class="stat-label">Silver</span><strong id="countSilver">0/6</strong></div>
+  <div class="stat"><span class="stat-label">Bronze</span><strong id="countBronze">0/46</strong></div>
+  <div class="stat"><span class="stat-label">Demo</span><strong id="demoChip" hidden>DEMO SAVE</strong><span id="noDemo">live save</span></div>
+</section>
+
+<section class="filters" aria-label="Filters">
+  <input type="search" id="search" placeholder="Search trophies…" aria-label="Search trophies">
+  <div class="chips" id="kindChips"></div>
+  <label>Grade <select id="gradeFilter"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+  <label>Status <select id="statusFilter"><option value="any">Any status</option><option value="earned">Earned</option><option value="todo">Not earned</option></select></label>
+</section>
+
+<main>
+  <section id="view-tracker" class="view active">
+    <div class="split">
+      <div class="list-col">
+        <div class="list-head"><span>PS5 Checklist</span><span id="listCount">55 trophies</span></div>
+        <ul id="trophyList" class="trophy-list"></ul>
+      </div>
+      <article id="detail" class="detail" aria-label="Trophy guide"></article>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view">
+    <div class="page-head"><h2>Roadmap to the Platinum</h2><p>Three stages, in order: finish the story, work the 100% checklist, then clean up the strands and the watch list. The missable trophy lives in Stage 1 — keep a manual save per chapter.</p></div>
+    <div id="roadmapBody"></div>
+  </section>
+
+  <section id="view-missables" class="view">
+    <div class="page-head"><h2>Missables &amp; Watch List</h2><p>One trophy can be missed outright; seven more need care in the moment. Everything else can be cleaned up after the story.</p></div>
+    <div id="missablesBody"></div>
+  </section>
+
+  <section id="view-next" class="view">
+    <div class="page-head"><h2>Next Up</h2><p>What to chase next, in the order that keeps the platinum safe: story first, the missable second, then the nearest progress counters.</p></div>
+    <ol id="nextBody" class="next-list"></ol>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Fan-made guide, not affiliated with Rockstar Games. No Rockstar logo or artwork. Trophy names and descriptions are shown as PlayStation publishes them; every guide is written in our own words and cites its sources beside it. Works offline — no network requests.</p>
+  <p id="backupNote">Progress saves in this browser (localStorage). Export JSON backs it up; Import JSON restores it.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
